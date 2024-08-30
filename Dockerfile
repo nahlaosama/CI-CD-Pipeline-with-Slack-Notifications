@@ -1,7 +1,7 @@
 FROM nginx:lts
 
-COPY index.html /usr/share/nginx/html
+COPY app.html /usr/share/nginx/html
 
-COPY index.html /usr/share/nginx/html/index.html
+COPY app.html /usr/share/nginx/html/app.html
 
 EXPOSE 80
