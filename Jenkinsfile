@@ -1,10 +1,5 @@
 pipeline {
-    agent any
-      docker {
-            image 'docker:latest' // Use Docker inside Jenkins pipeline
-            args '-v /var/run/docker.sock:/var/run/docker.sock' // Bind mount Docker socket
-        }
-   
+    agent any  
     }
     environment {
         // Define Docker Hub credentials
