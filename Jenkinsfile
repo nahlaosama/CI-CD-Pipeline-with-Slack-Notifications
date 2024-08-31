@@ -48,7 +48,7 @@ pipeline {
         always {
             // Send the build status to Slack
             slackSend (
-                channel: 'jenkins',
+                channel: 'jenkins-notif',
                 color: currentBuild.currentResult == 'SUCCESS' ? 'good' : 'danger',
                 message: "Pipeline ${currentBuild.fullDisplayName} finished with status: ${currentBuild.currentResult}"
             )
