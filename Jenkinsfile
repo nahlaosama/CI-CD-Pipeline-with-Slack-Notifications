@@ -1,10 +1,10 @@
 pipeline {
-    agent any  {
+    agent any  
     
     environment {
         // Define Docker Hub credentials
         DOCKER_HUB_CREDENTIALS = credentials('nahla-id')
-      sh 'echo 'nahla-id' | docker login -u nahla-id'
+        sh 'echo $DOCKER_HUB_CREDENTIALS_PSW | docker login -u $DOCKER_HUB_CREDENTIALS_USR --password-stdin'
         IMAGE_NAME = 'nahhla0220/nginx'
     }
 
@@ -55,5 +55,5 @@ pipeline {
         }
     }
 }
-}
+
  
