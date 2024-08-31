@@ -4,7 +4,7 @@ pipeline {
     environment {
         // Define Docker Hub credentials
         DOCKER_HUB_CREDENTIALS = credentials('nahla-id')
-      sh 'echo 'nahla-id' | docker login -u 'nahla-id'
+      sh 'echo nahla-id | docker login -u nahla-id'
         IMAGE_NAME = 'nahhla0220/nginx'
     }
 
