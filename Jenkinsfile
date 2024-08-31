@@ -4,7 +4,7 @@ pipeline {
     environment {
         // Define Docker Hub credentials
         DOCKER_HUB_CREDENTIALS = credentials('nahla-id')
-      sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+      sh 'echo nahla-id | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
         IMAGE_NAME = 'nahhla0220/nginx:lts'
     }
 
@@ -13,7 +13,7 @@ pipeline {
             steps {
                 script {
                     // Build the Docker image
-                    sh 'docker build -t nginx:v1 .'
+                    sh 'docker build -t nahhla0220/nginx:v1 .'
                 }
             }
         }
@@ -21,14 +21,12 @@ pipeline {
         stage('Push') {
             steps {
                 script {
-                    // Log in to Docker Hub
-                    sh 'echo $DOCKER_HUB_CREDENTIALS_PSW | docker login -u $DOCKER_HUB_CREDENTIALS_USR --password-stdin'
-                    
+                  
                     // Push the image to Docker Hub
-                    sh 'docker push nginx:v1'
+                    sh 'docker push nahhla0220/nginx:v1'
                     
                     // Remove the image after pushing
-                    sh 'docker rmi nginx:v1'
+                    sh 'docker rmi nahhla0220/nginx:v1'
                 }
             }
         }
@@ -37,10 +35,10 @@ pipeline {
             steps {
                 script {
                     // Pull the pushed image from Docker Hub
-                    sh 'docker pull nginx:v1'
+                    sh 'docker pull nahhla0220/nginx:v1'
                     
                     // Run the container and expose it on port 80
-                    sh 'docker run -d -p 80:80 nginx:v1'
+                    sh 'docker run -d -p 80:80 nahhla0220/nginx:v1'
                 }
             }
         }
