@@ -3,8 +3,8 @@ pipeline {
     }
     environment {
         // Define Docker Hub credentials
-        DOCKER_HUB_CREDENTIALS = credentials('nahla-id')
-      sh 'echo nahla-id | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+        DOCKER_HUB_CREDENTIALS = credentials('nahla-github')
+      sh 'echo nahla-github | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
         IMAGE_NAME = 'nahhla0220/nginx:lts'
     }
 
