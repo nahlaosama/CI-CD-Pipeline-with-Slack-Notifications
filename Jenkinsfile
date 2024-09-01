@@ -10,6 +10,7 @@ pipeline {
 
     stages {
         stage('Build') {
+            docker { image 'docker:stable' }
             steps {
                 script {
                     // Log in to Docker Hub using the credentials
@@ -24,7 +25,6 @@ pipeline {
             steps {
                 script {
                     
-                   docker { image 'docker:stable' }
                     // Push the image to Docker Hub
                     sh ' push nahhla0220/nginx:v1'
                     
