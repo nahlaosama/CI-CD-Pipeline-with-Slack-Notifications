@@ -13,11 +13,9 @@ pipeline {
             steps {
                 script {
                     // Log in to Docker Hub using the credentials
-                    sh """
-                        echo \$DOCKER_HUB_CREDENTIALS_PSW | docker login -u \$DOCKER_HUB_CREDENTIALS_USR --password-stdin
-                    """
+                    sh "echo \$DOCKER_HUB_CREDENTIALS_PSW | docker login -u \$DOCKER_HUB_CREDENTIALS_USR --password-stdin"
                     // Build the Docker image
-                    sh 'docker build -t nahhla0220/nginx:v1 .'
+                    docker {docker build -t nahhla0220/nginx:v1 }
                 }
             }
         }
@@ -27,10 +25,10 @@ pipeline {
                 script {
                   
                     // Push the image to Docker Hub
-                    sh 'docker push nahhla0220/nginx:v1'
+                    docker {docker push nahhla0220/nginx:v1}
                     
                     // Remove the image after pushing
-                    sh 'docker rmi nahhla0220/nginx:v1'
+                    docker {docker rmi nahhla0220/nginx:v1}
                 }
             }
         }
@@ -39,10 +37,10 @@ pipeline {
             steps {
                 script {
                     // Pull the pushed image from Docker Hub
-                    sh 'docker pull nahhla0220/nginx:v1'
+                    docker {docker pull nahhla0220/nginx:v1}
                     
                     // Run the container and expose it on port 80
-                    sh 'docker run -d -p 80:80 nahhla0220/nginx:v1'
+                    docker {docker run -d -p 80:80 nahhla0220/nginx:v1}
                 }
             }
         }
