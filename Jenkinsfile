@@ -15,7 +15,7 @@ pipeline {
                     // Log in to Docker Hub using the credentials
                     sh "echo \$DOCKER_HUB_CREDENTIALS_PSW | docker login -u \$DOCKER_HUB_CREDENTIALS_USR --password-stdin"
                     // Build the Docker image
-                    docker { build -t nahhla0220/nginx:v1 }
+                    sh 'docker build -t nahhla0220/nginx:v1'
                 }
             }
         }
