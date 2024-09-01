@@ -25,10 +25,10 @@ pipeline {
                 script {
                   
                     // Push the image to Docker Hub
-                    docker { push nahhla0220/nginx:v1}
+                    sh ' push nahhla0220/nginx:v1'
                     
                     // Remove the image after pushing
-                    docker { rmi nahhla0220/nginx:v1}
+                    sh 'rmi nahhla0220/nginx:v1'
                 }
             }
         }
