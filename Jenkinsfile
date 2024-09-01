@@ -1,5 +1,5 @@
 pipeline {
-    agent docker { image 'docker:stable' }  
+    agent any
     
     environment {
         // Define Docker Hub credentials
