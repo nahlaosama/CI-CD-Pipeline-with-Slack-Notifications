@@ -37,10 +37,10 @@ pipeline {
             steps {
                 script {
                     // Pull the pushed image from Docker Hub
-                    docker { pull nahhla0220/nginx:v1}
+                    sh 'docker pull nahhla0220/nginx:v1'
                     
                     // Run the container and expose it on port 80
-                    docker { run -d -p 80:80 nahhla0220/nginx:v1}
+                    sh 'docker run -d -p 80:80 nahhla0220/nginx:v1'
                 }
             }
         }
