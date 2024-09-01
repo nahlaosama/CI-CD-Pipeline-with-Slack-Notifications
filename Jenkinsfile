@@ -1,5 +1,5 @@
 pipeline {
-    agent any  
+    agent docker { image 'docker:stable' }  
     
     environment {
         // Define Docker Hub credentials
@@ -10,7 +10,6 @@ pipeline {
 
     stages {
         stage('Build') {
-            docker { image 'docker:stable' }
             steps {
                 script {
                     // Log in to Docker Hub using the credentials
